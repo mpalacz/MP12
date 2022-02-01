@@ -37,7 +37,7 @@ interface Speak{
     void speak();
 }
 
-class HomeAnimal<A extends Animal> {
+class HomeAnimal<A extends Animal & Run & Speak> {
     A object;
 
     HomeAnimal(A animal) {
@@ -59,20 +59,20 @@ class HomeAnimal<A extends Animal> {
 
 class Main{
     public static void main(String[] args) {
-        HomeAnimal<Animal> catHomeAnimal = new HomeAnimal<>(new Cat());
+        HomeAnimal<Cat> catHomeAnimal = new HomeAnimal<>(new Cat());
 
         System.out.println(catHomeAnimal.getObject());
         catHomeAnimal.showType();
         catHomeAnimal.sleepOnTheCouch();
         System.out.println();
 
-        HomeAnimal<Animal> dogHomeAnimal = new HomeAnimal<>(new Dog());
+        HomeAnimal<Dog> dogHomeAnimal = new HomeAnimal<>(new Dog());
         System.out.println(dogHomeAnimal.getObject());
         dogHomeAnimal.showType();
         dogHomeAnimal.sleepOnTheCouch();
         System.out.println();
 
-        HomeAnimal<Animal> sharkHomeAnimal = new HomeAnimal<>(new Shark());
+        HomeAnimal<Shark> sharkHomeAnimal = new HomeAnimal<>(new Shark()); //błąd zamierzony
 
     }
 }
